@@ -1,0 +1,19 @@
+/* ------------------------------------------------------------ *\
+	Helpers
+\* ------------------------------------------------------------ */
+
+/*  Clear  */
+
+.clear:after { content: ''; line-height: 0; display: table; clear: both; }
+
+/*  Notext  */
+.notext { font-size: 0; line-height: 0; text-indent: -4000px; }
+
+/* Link-advanced-search */
+
+.link-advanced-search { display: inline-block; vertical-align: middle; margin-top: 12px; color: @color-grey; text-decoration: underline; transition: color .3s;}
+.link-advanced-search:hover { text-decoration: none; color: @color-dark; }
+
+@media @breakpoint-mobile-portrait{
+	.link-advanced-search { margin-top: 5px; }
+}

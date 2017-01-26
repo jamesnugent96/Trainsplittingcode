@@ -1,0 +1,29 @@
+<head>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Trainsplit Whitelabel - Responsive page</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
+
+	<!-- Vendor Styles -->
+	
+	<link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css" type="text/css" media="all" />
+
+	<!-- App Styles -->
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!-- Vendor JS -->
+	<script src="vendor/jquery-3.1.1.min.js"></script>
+
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+	<script src="vendor/moment.min.js"></script>
+
+	<!-- App JS -->
+	<script src="js/functions.js"></script>
+</head>

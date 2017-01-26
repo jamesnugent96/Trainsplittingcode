@@ -1,0 +1,27 @@
+[
+	{
+		"id": "Bedford Midland or Bedford St Johns",
+		"label":"Bedford Midland or Bedford St Johns",
+		"value":"Bedford Midland or Bedford St Johns"
+	},
+	{
+		"id": "Birmingham New St, Moor St or Snow Hill",
+		"label":"Birmingham New St, Moor St or Snow Hill",
+		"value":"Birmingham New St, Moor St or Snow Hill"
+	},
+	{
+		"id":"Bootle New Strand or Oriel Rd",
+		"label":"Bootle New Strand or Oriel Rd",
+		"value":"Bootle New Strand or Oriel Rd"
+	},
+	{
+		"id":"Dorking, Dorking West or Deepdene",
+		"label":"Dorking, Dorking West or Deepdene",
+		"value":"Dorking, Dorking West or Deepdene"
+	},
+	{
+		"id":"Edenbridge or Edenbridge Town",
+		"label":"Edenbridge or Edenbridge Town",
+		"value":"Edenbridge or Edenbridge Town"
+	}
+]
