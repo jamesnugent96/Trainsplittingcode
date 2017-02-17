@@ -1,7 +1,7 @@
 {
-  "name": "hipertec-task-runner-less",
+  "name": "2create-task-runner-less",
   "version": "2.0.0",
-  "description": "hipertec task runner less",
+  "description": "2create task runner less",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.5.1",
@@ -26,6 +26,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Hipertec",
+  "author": "2create",
   "license": "MIT"
 }

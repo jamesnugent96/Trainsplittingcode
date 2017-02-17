@@ -39,6 +39,7 @@
 		</header><!-- /.header -->	
 	
 	
+
 	<div class="main">
 		<div class="container">
 			<div class="row">
@@ -67,13 +68,13 @@
 
 													<div class="col-md-6">
 														<div class="input-group">
-															<input type="text" class="form-control field-autocomplete" id="field-from" name="field-from" placeholder="From......">
+															<input type="text" class="form-control field-autocomplete" id="field-from" name="FromStation" placeholder="From......">
 														</div>
 													</div><!-- /.col-md-6 -->
 													
 													<div class="col-md-6">
 														<div class="input-group">
-															<input type="text" class="form-control field-autocomplete" id="field-to" name="field-to" placeholder="To......">
+															<input type="text" class="form-control field-autocomplete" id="field-to" name="ToStation" placeholder="To......">
 														</div>
 													</div><!-- /.col-md-6 -->
 												</div><!-- /.row -->
@@ -84,9 +85,9 @@
 															<label for="field-adult" class="form-label">Adult</label>
 															
 															<div class="select">
-																<select name="field-adult" id="field-adult" class="form-control">
-																	<option value="1">1</option>
-																	<option value="2" selected>2</option>
+																<select name="Adults" id="field-adult" class="form-control">
+																	<option value="1" selected>1</option>
+																	<option value="2">2</option>
 																	<option value="3">3</option>
 																	<option value="4">4</option>
 																	<option value="5">5</option>
@@ -101,15 +102,15 @@
 															<label for="field-child" class="form-label">Child</label>
 															
 															<div class="select">
-																<select name="field-child" id="field-child" class="form-control">
-																	<option value="1" selected>1</option>
+																<select name="Children" id="field-child" class="form-control">
+																	<option value="0">0</option>
+																	<option value="1">1</option>
 																	<option value="2">2</option>
 																	<option value="3">3</option>
 																	<option value="4">4</option>
 																	<option value="5">5</option>
 																	<option value="6">6</option>
 																	<option value="7">7</option>
-																	<option value="8">8</option>
 																</select>
 															</div><!-- /.select -->
 														</div><!-- /.select-group -->
@@ -120,8 +121,22 @@
 															<label for="field-owner" class="form-label form-label-black">Railcard Owner</label>
 															
 															<div class="select">
-																<select name="field-owner" id="field-owner" class="form-control">
-																	<option value="1">None</option>
+																<select name="Railcard" id="field-owner" class="form-control">
+																	<option selected="selected" value="">No Railcard</option>
+																	<option value="YNG">16-25 Railcard</option>
+																	<option value="NGC">Annual Gold Card</option>
+																	<option value="DCG">Devon &amp; Cornwall Gold Card</option>
+																	<option value="DCR">Devon &amp; Cornwall Railcard</option>
+																	<option value="DIS">Disabled Persons Railcard</option>
+																	<option value="FAM">Family &amp; Friends Railcard</option>
+																	<option value="HRC">Highland Railcard</option>
+																	<option value="HMF">HM Forces Railcard</option>
+																	<option value="JCP">Jobcentre Plus Discount Card</option>
+																	<option value="NEW">Network Railcard</option>
+																	<option value="NDJ">New Deal Photocard Scotland</option>
+																	<option value="SRY">Scottish Youth Railcard</option>
+																	<option value="SRN">Senior Railcard</option>
+																	<option value="2TR">Two Together Railcard</option>
 																</select>
 															</div><!-- /.select -->
 														</div><!-- /.select-group -->
@@ -135,7 +150,7 @@
 														<div class="input-group">
 															<label for="field-outward" class="form-label">Outward Journey</label>
 
-															<input type="text" class="form-control datepicker" id="field-outward" name="field-outward" placeholder="dd/mm/yy">
+															<input type="text" class="form-control datepicker" id="field-outward" name="OutboundDate" placeholder="dd/mm/yy">
 														</div>
 													</div><!-- /.col-md-4 -->
 													
@@ -157,32 +172,31 @@
 															<label for="field-departure-time" class="form-label">Departure time</label>
 
 															<div class="select">
-																<select name="field-departure-time" id="field-departure-time" class="form-control">
-																	<option value="--:--">--:--</option>
-																	<option value="0:00">00:00</option>
-																	<option value="0:30">00:30</option>
-																	<option value="1:00">01:00</option>
-																	<option value="1:30">01:30</option>
-																	<option value="2:00">02:00</option>
-																	<option value="2:30">02:30</option>
-																	<option value="3:00">03:00</option>
-																	<option value="3:30">03:30</option>
-																	<option value="4:00">04:00</option>
-																	<option value="4:30">04:30</option>
-																	<option value="5:00">05:00</option>
-																	<option value="5:30">05:30</option>
-																	<option value="6:00">06:00</option>
-																	<option value="6:30">06:30</option>
-																	<option value="7:00">07:00</option>
-																	<option value="7:30">07:30</option>
-																	<option value="8:00">08:00</option>
-																	<option value="8:30">08:30</option>
-																	<option value="9:00">09:00</option>
-																	<option value="9:30">09:30</option>
+																<select name="OutboundTime" id="field-departure-time" class="form-control">
+																	<option value="00:00">00:00</option>
+																	<option value="00:30">00:30</option>
+																	<option value="01:00">01:00</option>
+																	<option value="01:30">01:30</option>
+																	<option value="02:00">02:00</option>
+																	<option value="02:30">02:30</option>
+																	<option value="03:00">03:00</option>
+																	<option value="03:30">03:30</option>
+																	<option value="04:00">04:00</option>
+																	<option value="04:30">04:30</option>
+																	<option value="05:00">05:00</option>
+																	<option value="05:30">05:30</option>
+																	<option value="06:00">06:00</option>
+																	<option value="06:30">06:30</option>
+																	<option value="07:00">07:00</option>
+																	<option value="07:30">07:30</option>
+																	<option value="08:00">08:00</option>
+																	<option value="08:30">08:30</option>
+																	<option value="09:00">09:00</option>
+																	<option value="09:30">09:30</option>
 																	<option value="10:00">10:00</option>
 																	<option value="10:30">10:30</option>
 																	<option value="11:00">11:00</option>
-																	<option value="11:30" selected>11:30</option>
+																	<option value="11:30">11:30</option>
 																	<option value="12:00">12:00</option>
 																	<option value="12:30">12:30</option>
 																	<option value="13:00">13:00</option>
@@ -218,7 +232,7 @@
 														<div class="input-group">
 															<label for="field-return" class="form-label">Return Journey</label>
 
-															<input type="text" class="form-control datepicker" id="field-return" name="field-return" placeholder="dd/mm/yy">
+															<input type="text" class="form-control datepicker" id="field-return" name="InboundDate" placeholder="dd/mm/yy">
 														</div>
 													</div><!-- /.col-md-4 -->
 													
@@ -241,28 +255,27 @@
 															<label for="field-return-time" class="form-label">Return time</label>
 
 															<div class="select">
-																<select name="field-return-time" id="field-return-time" class="form-control">
-																	<option value="--:--">--:--</option>
-																	<option value="0:00">00:00</option>
-																	<option value="0:30">00:30</option>
-																	<option value="1:00">01:00</option>
-																	<option value="1:30">01:30</option>
-																	<option value="2:00">02:00</option>
-																	<option value="2:30">02:30</option>
-																	<option value="3:00">03:00</option>
-																	<option value="3:30">03:30</option>
-																	<option value="4:00">04:00</option>
-																	<option value="4:30">04:30</option>
-																	<option value="5:00">05:00</option>
-																	<option value="5:30">05:30</option>
-																	<option value="6:00">06:00</option>
-																	<option value="6:30">06:30</option>
-																	<option value="7:00">07:00</option>
-																	<option value="7:30">07:30</option>
-																	<option value="8:00">08:00</option>
-																	<option value="8:30">08:30</option>
-																	<option value="9:00">09:00</option>
-																	<option value="9:30">09:30</option>
+																<select name="InboundTime" id="field-return-time" class="form-control">
+																	<option value="00:00">00:00</option>
+																	<option value="00:30">00:30</option>
+																	<option value="01:00">01:00</option>
+																	<option value="01:30">01:30</option>
+																	<option value="02:00">02:00</option>
+																	<option value="02:30">02:30</option>
+																	<option value="03:00">03:00</option>
+																	<option value="03:30">03:30</option>
+																	<option value="04:00">04:00</option>
+																	<option value="04:30">04:30</option>
+																	<option value="05:00">05:00</option>
+																	<option value="05:30">05:30</option>
+																	<option value="06:00">06:00</option>
+																	<option value="06:30">06:30</option>
+																	<option value="07:00">07:00</option>
+																	<option value="07:30">07:30</option>
+																	<option value="08:00">08:00</option>
+																	<option value="08:30">08:30</option>
+																	<option value="09:00">09:00</option>
+																	<option value="09:30">09:30</option>
 																	<option value="10:00">10:00</option>
 																	<option value="10:30">10:30</option>
 																	<option value="11:00">11:00</option>
@@ -271,7 +284,7 @@
 																	<option value="12:30">12:30</option>
 																	<option value="13:00">13:00</option>
 																	<option value="13:30">13:30</option>
-																	<option value="14:00" selected>14:00</option>
+																	<option value="14:00">14:00</option>
 																	<option value="14:30">14:30</option>
 																	<option value="15:00">15:00</option>
 																	<option value="15:30">15:30</option>
