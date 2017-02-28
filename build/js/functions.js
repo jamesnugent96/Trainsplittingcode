@@ -59,34 +59,34 @@
 		$('.datepicker').datepicker('setDate', dateToday);
 
 		// Time Counting 
-		$startTimeSelect.on('change', function() {
-			var departureValue 		= $(this).find('option:selected').val();
-			var departureMoment 	= moment(departureValue, 'HH:mm');
-			var minReturnMoment 	= departureMoment.add(timeDifference, 'hours').format('HH:mm');
-			var returnMomentMins 	= moment.duration(minReturnMoment).asMinutes();
-			var departureDate 		= $('#field-outward').datepicker('getDate', '+1d');
-			var returnDate 			= $('#field-return').datepicker('getDate', '+1d');
-
-			if (moment(departureDate, dateFormat).date() === moment(returnDate, dateFormat).date() && moment(departureDate, dateFormat).month() === moment(returnDate, dateFormat).month() && moment(departureDate, dateFormat).year() === moment(returnDate, dateFormat).year()) {
-
-				if (returnMomentMins >= 0 && returnMomentMins <= 330) {
-					returnMomentMins = 540;
-
-					departureDate.setDate(departureDate.getDate() + 1); 
-
-					$('#field-return').datepicker('setDate', departureDate);
-				} 
-			}
-
-			$endTimeSelect.find('option').each(function(){
-				var returnValue = $(this).val()
-				var returnValueMoment = moment.duration(returnValue).asMinutes()
-				
-				if (returnValueMoment === returnMomentMins) {
-				   $(this).prop('selected', 'selected').nextAll().prop('disabled', false);
-				}
-			});
-		});
+		// $startTimeSelect.on('change', function() {
+		// 	var departureValue 		= $(this).find('option:selected').val();
+		// 	var departureMoment 	= moment(departureValue, 'HH:mm');
+		// 	var minReturnMoment 	= departureMoment.add(timeDifference, 'hours').format('HH:mm');
+		// 	var returnMomentMins 	= moment.duration(minReturnMoment).asMinutes();
+		// 	var departureDate 		= $('#field-outward').datepicker('getDate', '+1d');
+		// 	var returnDate 			= $('#field-return').datepicker('getDate', '+1d');
+        //
+		// 	if (moment(departureDate, dateFormat).date() === moment(returnDate, dateFormat).date() && moment(departureDate, dateFormat).month() === moment(returnDate, dateFormat).month() && moment(departureDate, dateFormat).year() === moment(returnDate, dateFormat).year()) {
+        //
+		// 		if (returnMomentMins >= 0 && returnMomentMins <= 330) {
+		// 			returnMomentMins = 540;
+        //
+		// 			departureDate.setDate(departureDate.getDate() + 1);
+        //
+		// 			$('#field-return').datepicker('setDate', departureDate);
+		// 		}
+		// 	}
+        //
+		// 	$endTimeSelect.find('option').each(function(){
+		// 		var returnValue = $(this).val()
+		// 		var returnValueMoment = moment.duration(returnValue).asMinutes()
+		//
+		// 		if (returnValueMoment === returnMomentMins) {
+		// 		   $(this).prop('selected', 'selected').nextAll().prop('disabled', false);
+		// 		}
+		// 	});
+		// });
 
 		// Parse Date Datepicker 
 		function getDate(element) {
