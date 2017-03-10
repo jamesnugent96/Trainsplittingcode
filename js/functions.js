@@ -8,7 +8,7 @@
 		var dateFormat 		= 'dd/mm/yy';
 		var timeDifference 	= 6;
 		var startHour 		= '09:00';
-		var firstStartHours = '00:00';
+		var firstStartHours = '06:00';
 
 
 		var $startTimeSelect 	= $('#field-departure-time');
@@ -45,7 +45,7 @@
 			buttonImage: 		'css/images/calendar.png',
 			buttonImageOnly: 	true,
 			buttonText: 		'Select date',
-			minDate: 			dateToday,
+			minDate: 			dateToday
 
 		}).on('change', function () {
 			var that = this;
@@ -59,34 +59,57 @@
 		$('.datepicker').datepicker('setDate', dateToday);
 
 		// Time Counting 
-		// $startTimeSelect.on('change', function() {
-		// 	var departureValue 		= $(this).find('option:selected').val();
-		// 	var departureMoment 	= moment(departureValue, 'HH:mm');
-		// 	var minReturnMoment 	= departureMoment.add(timeDifference, 'hours').format('HH:mm');
-		// 	var returnMomentMins 	= moment.duration(minReturnMoment).asMinutes();
-		// 	var departureDate 		= $('#field-outward').datepicker('getDate', '+1d');
-		// 	var returnDate 			= $('#field-return').datepicker('getDate', '+1d');
-        //
-		// 	if (moment(departureDate, dateFormat).date() === moment(returnDate, dateFormat).date() && moment(departureDate, dateFormat).month() === moment(returnDate, dateFormat).month() && moment(departureDate, dateFormat).year() === moment(returnDate, dateFormat).year()) {
-        //
-		// 		if (returnMomentMins >= 0 && returnMomentMins <= 330) {
-		// 			returnMomentMins = 540;
-        //
-		// 			departureDate.setDate(departureDate.getDate() + 1);
-        //
-		// 			$('#field-return').datepicker('setDate', departureDate);
-		// 		}
-		// 	}
-        //
-		// 	$endTimeSelect.find('option').each(function(){
-		// 		var returnValue = $(this).val()
-		// 		var returnValueMoment = moment.duration(returnValue).asMinutes()
-		//
-		// 		if (returnValueMoment === returnMomentMins) {
-		// 		   $(this).prop('selected', 'selected').nextAll().prop('disabled', false);
-		// 		}
-		// 	});
-		// });
+		$startTimeSelect.on('change', function() {
+			var departureValue 		= $(this).find('option:selected').val();
+			var departureMoment 	= moment(departureValue, 'HH:mm');
+			var minReturnMoment 	= departureMoment.add(timeDifference, 'hours').format('HH:mm');
+			var returnMomentMins 	= moment.duration(minReturnMoment).asMinutes();
+			var departureDate 		= $('#field-outward').datepicker('getDate', '+1d');
+			var returnDate 			= $('#field-return').datepicker('getDate', '+1d');
+
+			if (moment(departureDate, dateFormat).date() === moment(returnDate, dateFormat).date() && moment(departureDate, dateFormat).month() === moment(returnDate, dateFormat).month() && moment(departureDate, dateFormat).year() === moment(returnDate, dateFormat).year()) {
+
+				if (returnMomentMins >= 0 && returnMomentMins <= 330) {
+					returnMomentMins = 540;
+
+					departureDate.setDate(departureDate.getDate() + 1); 
+
+					$('#field-return').datepicker('setDate', departureDate);
+				} 
+			}
+
+			// Years
+			var startYear = moment(departureDate, dateFormat).year();
+			var endYear = moment(returnDate, dateFormat).year();
+			
+			// Month
+			var startMonth = moment(departureDate, dateFormat).month();
+			var endMonth = moment(returnDate, dateFormat).month();
+			
+			// Date
+			var startDate = moment(departureDate, dateFormat).date();
+			var endDate = moment(returnDate, dateFormat).date();
+
+			var startDateEndDateDiff = (startDate !== endDate && startMonth === endMonth && startYear === endYear) || (startDate === endDate && startMonth !== endMonth && startYear === endYear) || (startDate === endDate && startMonth === endMonth && startYear !== endYear) || (startDate !== endDate && startMonth !== endMonth && startYear === endYear) || (startDate === endDate && startMonth !== endMonth && startYear !== endYear) || (startDate !== endDate && startMonth === endMonth && startYear !== endYear) || (startDate !== endDate && startMonth !== endMonth && startYear !== endYear);
+
+			if(startDateEndDateDiff) {
+				$endTimeSelect.find('option').prop('disabled', false);
+			} else {
+				$endTimeSelect.find('option').each(function(){
+					var returnValue = $(this).val()
+					var returnValueMoment = moment.duration(returnValue).asMinutes()
+					
+					if (returnValueMoment === returnMomentMins) {
+						$(this).prevAll().prop('disabled', true);
+
+						$(this).prop({
+							'disabled': false,
+							'selected': true
+						}).nextAll().prop('disabled', false);
+					}
+				});
+			}
+		});
 
 		// Parse Date Datepicker 
 		function getDate(element) {
@@ -122,15 +145,15 @@
 
 			var currentSelectValues = setHoursDuration(nowMinutes, nowHours);
 
-			var startDateEndDateDiff = (startDate !== endDate && startMonth === endMonth && startYear === endYear) || (startDate !== endDate && startMonth !== endMonth && startYear !== endYear) || (startDate === endDate && startMonth !== endMonth && startYear !== endYear) || (startDate !== endDate && startMonth === endMonth && startYear !== endYear) || (startDate === endDate && startMonth === endMonth && startYear !== endYear) || (startDate === endDate && startMonth !== endMonth && startYear === endYear) || (startDate !== endDate && startMonth === endMonth && startYear === endYear) || (startDate !== endDate && startMonth !== endMonth && startYear === endYear);
+			var startDateEndDateDiff = (startDate !== endDate && startMonth === endMonth && startYear === endYear) || (startDate === endDate && startMonth !== endMonth && startYear === endYear) || (startDate === endDate && startMonth === endMonth && startYear !== endYear) || (startDate !== endDate && startMonth !== endMonth && startYear === endYear) || (startDate === endDate && startMonth !== endMonth && startYear !== endYear) || (startDate !== endDate && startMonth === endMonth && startYear !== endYear) || (startDate !== endDate && startMonth !== endMonth && startYear !== endYear);
 
-			var startDateNowDateDiff = (startDate !== nowDate && startMonth === nowMonth && startYear === nowYear) || (startDate === nowDate && startMonth !== nowMonth && startYear === nowYear) || (startDate === nowDate && startMonth === nowMonth && startYear !== nowYear);
+			var startDateNowDateDiff = (nowDate !== startDate && nowMonth === startMonth && nowYear === startYear) || (nowDate === startDate && nowMonth !== startMonth && nowYear === startYear) || (nowDate === startDate && nowMonth === startMonth && nowYear !== startYear) || (nowDate !== startDate && nowMonth !== startMonth && nowYear === startYear) || (nowDate === startDate && nowMonth !== startMonth && nowYear !== startYear) || (nowDate !== startDate && nowMonth === startMonth && nowYear !== startYear) || (nowDate !== startDate && nowMonth !== startMonth && nowYear !== startYear);
+
+			var endDateNowDateDiff = (nowDate !== endDate && nowMonth === endMonth && nowYear === endYear) || (nowDate === endDate && nowMonth !== endMonth && nowYear === endYear) || (nowDate === endDate && nowMonth === endMonth && nowYear !== endYear) || (nowDate !== endDate && nowMonth !== endMonth && nowYear === endYear) || (nowDate === endDate && nowMonth !== endMonth && nowYear !== endYear) || (nowDate !== endDate && nowMonth === endMonth && nowYear !== endYear) || (nowDate !== endDate && nowMonth !== endMonth && nowYear !== endYear);
 
 			var startDateEndDateEqual = startDate === endDate && startMonth === endMonth && startYear === endYear;
 
 			var startDateNowDateEqual = startDate === nowDate && startMonth === nowMonth && startYear === nowYear;
-
-			var endDateNowDateDiff = (endDate !== nowDate && endMonth === nowMonth && endYear === nowYear) || (endDate === nowDate && endMonth !== nowMonth && endYear === nowYear) || (endDate === nowDate && endMonth === nowMonth && endYear !== nowYear);
 
 			var endDateNowDateEqual = endDate === nowDate && endMonth === nowMonth && endYear === nowYear;
 
@@ -140,14 +163,14 @@
 						'disabled': false,
 						'selected': true
 					})
-					.nextAll().prop('disabled', false);	
+					.siblings().prop('disabled', false);	
 
 				$endTimeSelect.find('option[value="' + firstStartHours + '"]')
 					.prop({
 						'disabled': false,
 						'selected': true
 					})
-					.nextAll().prop('disabled', false);	
+					.siblings().prop('disabled', false);	
 
 			} else if (startDateEndDateEqual && endDateNowDateDiff && startDateNowDateDiff) {
 				$startTimeSelect.find('option[value="' + firstStartHours + '"]')
@@ -155,7 +178,7 @@
 						'disabled': false,
 						'selected': true
 					})
-					.nextAll().prop('disabled', false);	
+					.siblings().prop('disabled', false);	
 
 				$endTimeSelect.find('option[value="' + moment(firstStartHours, 'HH:mm').add(timeDifference, 'hours').format('HH:mm') + '"]')
 					.prop({
@@ -163,6 +186,12 @@
 						'selected': true
 					})
 					.nextAll().prop('disabled', false);
+
+				$endTimeSelect.find('option[value="' + moment(firstStartHours, 'HH:mm').add(timeDifference, 'hours').format('HH:mm') + '"]')	
+					.prop({
+						'disabled': false,
+						'selected': true
+					}).prevAll().prop('disabled', true);
 
 			} else if(startDateNowDateEqual && endDateNowDateDiff && startDateEndDateDiff) {
 				$startTimeSelect.find('option[value="' + currentSelectValues[0] + '"]')
@@ -174,26 +203,15 @@
 						'disabled': false,
 						'selected': true
 					})
-					.nextAll().prop('disabled', false);
+					.siblings().prop('disabled', false);
 
-			} else if(startDateNowDateEqual && endDateNowDateEqual && startDateEndDateEqual) {
+			} else if(startDateNowDateEqual && endDateNowDateEqual) {
 				$startTimeSelect.find('option[value="' + currentSelectValues[0] + '"]').prop('selected', 'selected')
 					.prevAll().prop('disabled', true);
 
 				$endTimeSelect.find('option[value="' + currentSelectValues[1] + '"]').prop('selected', 'selected')
 					.prevAll().prop('disabled', true);
 			
-			} else if((endMonth !== startMonth && endYear !== startYear) || (endMonth !== startMonth && endYear == startYear) && startDateNowDateEqual) {
-				$startTimeSelect.find('option[value="' + currentSelectValues[0] + '"]')
-					.prop('selected', 'selected')
-					.prevAll().prop('disabled', true);
-
-				$endTimeSelect.find('option[value="' + firstStartHours + '"]')
-					.prop({
-						'disabled': false,
-						'selected': true
-					})
-					.nextAll().prop('disabled', false)
 			}
 		}
 
@@ -233,13 +251,13 @@
 			} 
 
 			if(startHourDefault + timeDifference >= 24) {
-				startHourDefault = 9;
+				// startHourDefault = '09';
 				startMinutesDefault = '00';
 				
 				var newDate = $('#field-outward').datepicker('getDate', '+1d');
 				newDate.setDate(newDate.getDate() + 1);
 				
-				$('#field-return').datepicker('setDate', newDate);
+				// $('#field-return').datepicker('setDate', newDate);
 
 				return [startHourDefault + ':' + startMinutesDefault, startHourDefault + ':' + startMinutesDefault];
 			} else {
@@ -253,7 +271,7 @@
 		var $selectAdult = $('#field-adult');
 		var $selectChild = $('#field-child');
 
-		$selectAdult.on('change', function (argument) {
+		$selectAdult.on('change', function () {
 			var currentValue = $(this).val();
 
 			var currentIndex = maxNumberPeople - currentValue - 1;
@@ -268,7 +286,7 @@
 			}
 		});
 
-		$selectChild.on('change', function (argument) {
+		$selectChild.on('change', function () {
 			var currentValue = $(this).val();
 
 			var currentIndex = maxNumberPeople - currentValue - 1;
@@ -310,6 +328,12 @@
 				$(this).attr('data-uic', uicNumber);
 			},
 			minLength: 3
+		});
+
+		$('.form-toggle-trigger').on('change', function() {
+			var isChecked = $(this).prop('checked');
+
+			$('.form-toggle-row').slideToggle(isChecked);
 		});
 	});
 })(jQuery, window, document);

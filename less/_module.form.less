@@ -46,6 +46,25 @@
 	 .select-group-secondary { max-width: 133px; margin-left: -25px; }
 
 	 .form-btn { float: right; }
+
+	.form-toggle-row { display: none; }
+}
+
+/* ------------------------------------------------------------ *\
+	Checkbox
+\* ------------------------------------------------------------ */
+
+.checkbox {
+	& { position: relative; }
+
+	input { position: absolute; top: 0; left: 0; width: 0; height: 0; opacity: 0; }
+
+	label { 
+		& { display: inline-block; padding: 0; font-weight: bold; }
+
+		&:after { display: block; height: 34px; width: 34px; border: 2px solid #ebebeb; border-radius: 4px; margin-top: 5px; background: url(../css/images/check.png) no-repeat 50% -300%; background-size: 80% auto; content: ''; transition: background-position .4s; }
+	}
+	input:checked + label:after { background-position: 50% 50%; }
 }
 
 /* ------------------------------------------------------------ *\

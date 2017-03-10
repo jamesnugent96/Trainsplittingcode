@@ -81,7 +81,7 @@ var getPathToFolder = function(path, folderName) {
 
 
 
-var configFileExist = fileExists(getPathToFolder(process.env.INIT_CWD, 'server')  + '/2c-gulp-config.json');
+var configFileExist = fileExists(getPathToFolder(process.env.INIT_CWD, 'server')  + '/hipertec-gulp-config.json');
 
 // Less task error handler
 var errorHandler = function(errorObj) {
