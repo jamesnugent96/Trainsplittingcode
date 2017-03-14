@@ -333,7 +333,8 @@
 		$('.form-toggle-trigger').on('change', function() {
 			var isChecked = $(this).prop('checked');
 
-			$('.form-toggle-row').slideToggle(isChecked);
+			$('.form-toggle-row').slideToggle(isChecked)
+				.find('input, select').prop('disabled', !isChecked);
 		});
 	});
 })(jQuery, window, document);

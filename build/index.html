@@ -85,7 +85,7 @@
 															<label for="field-adult" class="form-label">Adult</label>
 															
 															<div class="select">
-																<select name="field-adult" id="field-adult" class="form-control">
+																<select name="Adults" id="field-adult" class="form-control">
 																	<option value="1" selected>1</option>
 																	<option value="2">2</option>
 																	<option value="3">3</option>
@@ -102,7 +102,7 @@
 															<label for="field-child" class="form-label">Child</label>
 															
 															<div class="select">
-																<select name="field-child" id="field-child" class="form-control">
+																<select name="Children" id="field-child" class="form-control">
 																	<option value="0">0</option>
 																	<option value="1">1</option>
 																	<option value="2">2</option>
@@ -121,7 +121,7 @@
 															<label for="field-owner" class="form-label form-label-black">Railcard Owner</label>
 															
 															<div class="select">
-																<select name="field-owner" id="field-owner" class="form-control">
+																<select name="Railcard" id="field-owner" class="form-control">
 																	<option selected="selected" value="">No Railcard</option>
 																	<option value="YNG">16-25 Railcard</option>
 																	<option value="NGC">Annual Gold Card</option>
@@ -230,7 +230,8 @@
 												<div class="row">
 													<div class="col-xs-12">
 														<div class="checkbox">
-															<input type="checkbox" name="single" id="return" class="form-toggle-trigger">
+															<input type="checkbox" name="return" id="book_return" class="form-toggle-trigger">
+															
 															<label for="book_return">Book Return</label>
 														</div><!-- /.checkbox -->
 													</div><!-- /.col-xs-12 -->
@@ -240,7 +241,8 @@
 													<div class="col-md-4">
 														<div class="input-group">
 															<label for="field-return" class="form-label">Return Journey</label>
-															<input type="text" class="form-control datepicker" id="field-return" name="InboundDate" placeholder="dd/mm/yy">
+
+															<input type="text" class="form-control datepicker" id="field-return" name="InboundDate" placeholder="dd/mm/yy" disabled>
 														</div>
 													</div><!-- /.col-md-4 -->
 													
@@ -249,10 +251,10 @@
 															<label for="field-status" class="form-label hidden-xs hidden-sm">&nbsp;</label>
 
 															<div class="select">
-																<select name="field-status" id="field-status" class="form-control">
-																	<option value="arriving" >Arriving</option>
+																<select name="field-status" id="field-status" class="form-control" disabled>
+																	<option value="arriving" selected>Arriving</option>
 
-																	<option value="leaving" selected>Leaving</option>
+																	<option value="leaving">Leaving</option>
 																</select>
 															</div><!-- /.select -->
 														</div><!-- /.select-group -->
@@ -263,7 +265,7 @@
 															<label for="field-return-time" class="form-label">Return time</label>
 
 															<div class="select">
-																<select name="InboundTime" id="field-return-time" class="form-control">
+																<select name="InboundTime" id="field-return-time" class="form-control" disabled>
 																	<option value="00:00">00:00</option>
 																	<option value="00:30">00:30</option>
 																	<option value="01:00">01:00</option>

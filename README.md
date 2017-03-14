@@ -16,12 +16,10 @@ $ `npm install --global gulp && npm install` (use GitBash on Windows / Terminal 
 ## Running the app
 
 This should be used every time when you start working on the project:
+
 $ `gulp` (use GitBash on Windows / Terminal on OSX) in the directory of the project
 
 
 ## Build the app
 
 $ `gulp build` (use GitBash on Windows / Terminal on OSX) in the directory of the project
-
-## Final Files
-Complete and compiled files can be found in the build directory after running, `gulp build`.
